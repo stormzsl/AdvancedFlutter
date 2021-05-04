@@ -14,6 +14,7 @@ class RandomWordsState extends State<RandomWordsWidget> {
   @override
   Widget build(BuildContext context) {
     return new Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         new Text(words),
         new TextButton(
