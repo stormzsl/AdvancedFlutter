@@ -10,15 +10,18 @@ class RandomWordsWidget extends StatefulWidget {
 }
 
 class RandomWordsState extends State<RandomWordsWidget> {
+  var words = WordPair.random().asPascalCase;
   @override
   Widget build(BuildContext context) {
-    final words = WordPair.random();
     return new Column(
       children: [
-        new Text(words.asCamelCase),
+        new Text(words),
         new TextButton(
           onPressed: () {
             LogUtil.v('onPressed >>>>');
+            setState(() {
+              words = WordPair.random().asCamelCase;
+            });
           },
           child: Text('TextButton click'),
         )
