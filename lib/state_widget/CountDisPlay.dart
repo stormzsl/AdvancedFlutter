@@ -9,6 +9,8 @@
 
 在Flutter中，事件流是“向上”传递的，而状态流是“向下”传递的（译者语：这类似于React/Vue中父子组件通信的方式：子widget到父widget是通过事件通信，而父到子是通过状态），
 重定向这一流程的共同父元素是State.
+
+责任分离允许将复杂性逻辑封装在各个widget中，同时保持父项的简单性。
 */
 
 import 'package:flutter/material.dart';
