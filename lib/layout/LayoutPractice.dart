@@ -56,17 +56,7 @@ class LayoutWidget extends StatelessWidget {
               )
             ],
           )),
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text(
-              '41',
-              style: TextStyle(fontSize: 16.0),
-            ),
-          )
+          _FavoriteFulWidget(),
         ],
       ),
     );
@@ -285,5 +275,49 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
     );
 
     return container;
+  }
+}
+
+class _FavoriteFulWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new _FavoriteWidgetState();
+  }
+}
+
+class _FavoriteWidgetState extends State<_FavoriteFulWidget> {
+  bool _isFavorite = true;
+  int _favoriteNum = 41;
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorite) {
+        _favoriteNum -= 1;
+        _isFavorite = false;
+      } else {
+        _favoriteNum += 1;
+        _isFavorite = true;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconButton(
+            onPressed: _toggleFavorite,
+            color: Colors.red[500],
+            icon: Icon(_isFavorite ? Icons.favorite : Icons.favorite_border)),
+        SizedBox(
+          //当文本在40和41之间变化时，将文本放在SizedBox中并设置其宽度可防止出现明显的“跳跃” ，因为这些值具有不同的宽度。
+          child: Text(
+            '$_favoriteNum',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+          ),
+        )
+      ],
+    );
   }
 }
