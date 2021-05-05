@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'RandomWords.dart';
+import 'layout/LayoutPractice.dart';
 
 void main() => runApp(new MyAppStateWidget());
 
@@ -10,7 +9,7 @@ class MyAppStateWidget extends StatelessWidget {
     return new MaterialApp(
       title: '英语生成列表主标题',
       theme: ThemeData(primaryColor: Colors.white), //更改页面主题
-      home: RandomWordsWidget(),
+      home: LayoutWidget(),
     );
   }
 }
