@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'layout/LayoutPractice.dart';
+import 'state_widget/TabBoxA.dart';
+import 'state_widget/TabBoxB.dart';
 
 void main() => runApp(new MyAppStateWidget());
 
@@ -14,7 +16,9 @@ class MyAppStateWidget extends StatelessWidget {
             centerTitle: true,
             title: Text('flutter advance'),
           ),
-          body: LayoutWidget(),
+          body: Center(
+            child: TabBoxAFulWidget(),
+          ),
         ));
   }
 }
