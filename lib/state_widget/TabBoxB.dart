@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 /*
 父widget管理子Widget的状态
+此外还有混合式状态管理:可以参考官方文档:https://flutterchina.club/tutorials/interactive/
 */
 class ParentStatefulWidget extends StatefulWidget {
   @override
