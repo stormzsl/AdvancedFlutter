@@ -7,10 +7,9 @@ class LayoutWidget extends StatelessWidget {
     Widget image = _buildImage();
     Widget favoriteRow = _buildFavoriteRow(context);
     Widget buttonRow = _buildButtonContainer(context);
-    return new Container(
-      child: new Column(
-        children: [image, favoriteRow, buttonRow],
-      ),
+    Widget textSection = _buildTextSection();
+    return new ListView(
+      children: [image, favoriteRow, buttonRow, textSection],
     );
   }
 
@@ -46,9 +45,12 @@ class LayoutWidget extends StatelessWidget {
             Icons.star,
             color: Colors.red[500],
           ),
-          Text(
-            '41',
-            style: TextStyle(fontSize: 16.0),
+          Container(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              '41',
+              style: TextStyle(fontSize: 16.0),
+            ),
           )
         ],
       ),
@@ -87,6 +89,18 @@ class LayoutWidget extends StatelessWidget {
               color: color, fontSize: 16.0, fontWeight: FontWeight.w500),
         )
       ],
+    );
+  }
+
+  Widget _buildTextSection() {
+    return Container(
+      padding: const EdgeInsets.all(32.0),
+      child: Text(
+        '''
+Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.
+        ''',
+        softWrap: true, //softwrap属性表示文本是否应在软换行符（例如句点或逗号）之间断开
+      ),
     );
   }
 }
