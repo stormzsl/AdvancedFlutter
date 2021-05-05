@@ -8,8 +8,23 @@ class LayoutWidget extends StatelessWidget {
     Widget favoriteRow = _buildFavoriteRow(context);
     Widget buttonRow = _buildButtonContainer(context);
     Widget textSection = _buildTextSection();
+    Widget cardWidget = _buildCard(context);
+    Widget stackWidget = _buildStack();
+    Widget listview = _buildListView();
+    Widget border = _buildBorderWidget();
+    /*
+    * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
+    */
     return new ListView(
-      children: [image, favoriteRow, buttonRow, textSection],
+      children: [
+        image,
+        favoriteRow,
+        buttonRow,
+        textSection,
+        cardWidget,
+        stackWidget,
+        border,
+      ],
     );
   }
 
@@ -102,5 +117,173 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
         softWrap: true, //softwrap属性表示文本是否应在软换行符（例如句点或逗号）之间断开
       ),
     );
+  }
+
+//构建card widget
+  Widget _buildCard(BuildContext context) {
+    var card = new SizedBox(
+      height: 210.0,
+      child: new Card(
+        child: new Column(
+          children: [
+            new ListTile(
+              title: new Text('1625 Main Street',
+                  style: new TextStyle(fontWeight: FontWeight.w500)),
+              subtitle: new Text('My City, CA 99984'),
+              leading: new Icon(
+                Icons.restaurant_menu,
+                color: Colors.blue[500],
+              ),
+            ),
+            new Divider(),
+            new ListTile(
+              title: new Text('(408) 555-1212',
+                  style: new TextStyle(fontWeight: FontWeight.w500)),
+              leading: new Icon(
+                Icons.contact_phone,
+                color: Colors.blue[500],
+              ),
+            ),
+            new ListTile(
+              title: new Text('costa@example.com'),
+              leading: new Icon(
+                Icons.contact_mail,
+                color: Colors.blue[500],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    return card;
+  }
+
+//构建stack widget
+  Widget _buildStack() {
+    var stack = new Stack(
+      alignment: const Alignment(0.5, 0.6),
+      children: [
+        new CircleAvatar(
+          backgroundImage: new AssetImage('assets/images/pic.jpg'),
+          radius: 100.0,
+        ),
+        new Container(
+          decoration: new BoxDecoration(
+            color: Colors.black45,
+          ),
+          child: new Text(
+            'Mia B',
+            style: new TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+
+    return stack;
+  }
+
+//构建ListView widget
+  Widget _buildListView() {
+    List<Widget> list = <Widget>[
+      new ListTile(
+        title: new Text('CineArts at the Empire',
+            style: new TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0)),
+        subtitle: new Text('85 W Portal Ave'),
+        leading: new Icon(
+          Icons.theaters,
+          color: Colors.blue[500],
+        ),
+      ),
+      new ListTile(
+        title: new Text('The Castro Theater',
+            style: new TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0)),
+        subtitle: new Text('429 Castro St'),
+        leading: new Icon(
+          Icons.theaters,
+          color: Colors.blue[500],
+        ),
+      ),
+      // ...
+      // See the rest of the column defined on GitHub:
+      // https://raw.githubusercontent.com/flutter/website/master/_includes/code/layout/listview/main.dart
+    ];
+    return new ListView(
+      children: list,
+    );
+  }
+
+//构建border widget
+  Widget _buildBorderWidget() {
+    var container = new Container(
+      decoration: new BoxDecoration(
+        color: Colors.black26,
+      ),
+      child: new Column(
+        children: [
+          new Row(
+            children: [
+              new Expanded(
+                child: new Container(
+                  decoration: new BoxDecoration(
+                    border: new Border.all(width: 10.0, color: Colors.black38),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(8.0)),
+                  ),
+                  margin: const EdgeInsets.all(4.0),
+                  child: new Image.asset('assets/images/pic.jpg'),
+                ),
+              ),
+              new Expanded(
+                child: new Container(
+                  decoration: new BoxDecoration(
+                    border: new Border.all(width: 10.0, color: Colors.black38),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(8.0)),
+                  ),
+                  margin: const EdgeInsets.all(4.0),
+                  child: new Image.asset('assets/images/pic.jpg'),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            children: [
+              new Expanded(
+                child: new Container(
+                  decoration: new BoxDecoration(
+                    border: new Border.all(width: 10.0, color: Colors.black38),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(8.0)),
+                  ),
+                  margin: const EdgeInsets.all(4.0),
+                  child: new Image.asset('assets/images/pic.jpg'),
+                ),
+              ),
+              new Expanded(
+                child: new Container(
+                  decoration: new BoxDecoration(
+                    border: new Border.all(width: 10.0, color: Colors.black38),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(8.0)),
+                  ),
+                  margin: const EdgeInsets.all(4.0),
+                  child: new Image.asset('assets/images/pic.jpg'),
+                ),
+              ),
+            ],
+          )
+          // ...
+          // See the definition for the second row on GitHub:
+          // https://raw.githubusercontent.com/flutter/website/master/_includes/code/layout/container/main.dart
+        ],
+      ),
+    );
+
+    return container;
   }
 }
