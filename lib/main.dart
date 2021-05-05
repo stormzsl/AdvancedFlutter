@@ -9,6 +9,7 @@ class MyAppStateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: '英语生成列表主标题',
+      theme: ThemeData(primaryColor: Colors.white), //更改页面主题
       home: RandomWordsWidget(),
     );
   }
