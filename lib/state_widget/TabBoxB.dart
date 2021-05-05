@@ -28,9 +28,8 @@ class _ParentState extends State<ParentStatefulWidget> {
 }
 
 class _TabBoxBWidget extends StatelessWidget {
-  _TabBoxBWidget({Key? key, this.active: false, required this.onChanged})
-      : super(key: key);
-
+  //添加required代表外界调用必须传入对应的参数值
+  _TabBoxBWidget({this.active: false, required this.onChanged});
   final bool active;
   final ValueChanged<bool> onChanged;
 
