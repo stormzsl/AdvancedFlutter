@@ -19,8 +19,39 @@ class RandomWordsState extends State<RandomWordsWidget> {
     return new Scaffold(
       appBar: AppBar(
         title: Text('随机英语列表'),
+        actions: [IconButton(onPressed: _pushSaved, icon: Icon(Icons.list))],
       ),
       body: _buildSuggestions(),
+    );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(
+      new MaterialPageRoute(
+        builder: (context) {
+          final tiles = _saved.map(
+            (pair) {
+              return new ListTile(
+                title: new Text(
+                  pair.asPascalCase,
+                  style: _bigFont,
+                ),
+              );
+            },
+          );
+          final divided = ListTile.divideTiles(
+            context: context,
+            tiles: tiles,
+          ).toList();
+
+          return new Scaffold(
+            appBar: new AppBar(
+              title: new Text('Saved Suggestions'),
+            ),
+            body: new ListView(children: divided),
+          );
+        },
+      ),
     );
   }
 
