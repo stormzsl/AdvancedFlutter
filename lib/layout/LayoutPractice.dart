@@ -217,6 +217,10 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
         children: [
           new Row(
             children: [
+              /*
+              * widget被标记为Expanded,这意味着它会填充尚未被其他子项占用的的剩余可用空间。
+              Expanded可以拥有多个children， 然后使用flex参数来确定他们占用剩余空间的比例。
+              */
               new Expanded(
                 child: new Container(
                   decoration: new BoxDecoration(
