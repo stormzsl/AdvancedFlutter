@@ -8,7 +8,13 @@ class MyAppStateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         title: '英语生成列表主标题',
-        theme: ThemeData(primaryColor: Colors.blue), //更改页面主题
+        theme: ThemeData(primaryColor: Colors.red), //更改页面主题
+        initialRoute: '/a',
+        routes: <String, WidgetBuilder>{
+          '/a': (BuildContext context) => new LayoutWidget(),
+          '/b': (BuildContext context) => new RooButtonWidget(title: 'page B'),
+          '/c': (BuildContext context) => new RooButtonWidget(title: 'page C')
+        },
         home: new Scaffold(
           appBar: AppBar(
             centerTitle: true,

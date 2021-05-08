@@ -10,6 +10,5 @@ class RunMan {
 class Man with RunMan {
   void testWith() {
     run();
-    ThemeData()
   }
 }

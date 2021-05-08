@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class RooButtonWidget extends StatelessWidget {
+  RooButtonWidget({this.title = 'hello'});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Center(
