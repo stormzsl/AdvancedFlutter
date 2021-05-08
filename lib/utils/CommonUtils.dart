@@ -11,18 +11,18 @@ class LogUtil {
     TAG = tag;
   }
 
-  static void e(Object object, {String? tag}) {
+  static void e(Object object, {String tag}) {
     _printLog(tag, '  e  ', object);
   }
 
-  static void v(Object object, {String? tag}) {
+  static void v(Object object, {String tag}) {
     if (debuggable) {
       _printLog(tag, '  v  ', object);
     }
   }
 
 //下划线开头的方法表示私有的
-  static void _printLog(String? tag, String stag, Object object) {
+  static void _printLog(String tag, String stag, Object object) {
     StringBuffer sb = new StringBuffer();
     sb.write((tag == null || tag.isEmpty) ? TAG : tag);
     sb.write(stag);

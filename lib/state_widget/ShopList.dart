@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 * 这是一篇关于state状态管理的分析透彻的官网文章包括state状态的生命周期:https://flutterchina.club/widgets-intro/
 */
 class Product {
-  const Product({required this.name});
+  const Product({@required this.name});
   final String name;
 }
 
@@ -12,9 +12,9 @@ typedef void CartChangedCallback(Product product, bool inCart);
 
 class ShoppingListItem extends StatelessWidget {
   ShoppingListItem(
-      {required Product product,
-      required this.inCart,
-      required this.onCartChanged})
+      {@required Product product,
+      @required this.inCart,
+      @required this.onCartChanged})
       : product = product,
         super(key: new ObjectKey(product));
 
@@ -30,7 +30,7 @@ class ShoppingListItem extends StatelessWidget {
     return inCart ? Colors.black54 : Theme.of(context).primaryColor;
   }
 
-  TextStyle? _getTextStyle(BuildContext context) {
+  TextStyle _getTextStyle(BuildContext context) {
     if (!inCart) return null;
 
     return new TextStyle(
@@ -55,7 +55,7 @@ class ShoppingListItem extends StatelessWidget {
 }
 
 class ShoppingList extends StatefulWidget {
-  ShoppingList({required this.products});
+  ShoppingList({@required this.products});
 
   final List<Product> products;
 
