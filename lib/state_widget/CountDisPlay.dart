@@ -16,7 +16,7 @@
 import 'package:flutter/material.dart';
 
 class CounterDisplay extends StatelessWidget {
-  CounterDisplay({required this.count});
+  CounterDisplay({@required this.count});
 
   final int count;
 
@@ -27,7 +27,7 @@ class CounterDisplay extends StatelessWidget {
 }
 
 class CounterIncrementor extends StatelessWidget {
-  CounterIncrementor({required this.onPressed});
+  CounterIncrementor({@required this.onPressed});
 
   final VoidCallback onPressed;
 

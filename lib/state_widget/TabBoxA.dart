@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 自身管理state状态
 */
 class TabBoxAFulWidget extends StatefulWidget {
-  TabBoxAFulWidget({Key? key}) : super(key: key);
+  TabBoxAFulWidget({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
