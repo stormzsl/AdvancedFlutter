@@ -1,8 +1,6 @@
 import 'package:flutter/painting.dart';
 import 'package:myapp/common/colors.dart';
 
-import '../roo_flutter.dart';
-
 //RooButton的默认尺寸
 const Size kDefaultRooButtonSize = Size(75.0, 22.0);
 
@@ -93,3 +91,20 @@ const TextStyle kRooTopTipTitleStyle = TextStyle(
   color: Color(0xFFFF8C28),
   textBaseline: TextBaseline.alphabetic,
 );
+
+//普通标题颜色
+const TextStyle kDefalutNormalTitleStyle = TextStyle(
+    inherit: false,
+    fontSize: 22.0,
+    fontWeight: FontWeight.normal,
+    color: RooColors.black,
+    textBaseline: TextBaseline.alphabetic //对齐底部基准线
+    );
+
+//普通文案的颜色
+const TextStyle kDefaultNormalTextStyle = TextStyle(
+    inherit: false,
+    fontSize: 16.0,
+    fontWeight: FontWeight.normal,
+    textBaseline: TextBaseline.alphabetic,
+    color: RooColors.gray);

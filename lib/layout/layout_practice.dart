@@ -15,22 +15,24 @@ class LayoutWidget extends StatelessWidget {
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
     */
-    return new ListView(
-      children: [
-        image,
-        favoriteRow,
-        buttonRow,
-        textSection,
-        cardWidget,
-        stackWidget,
-        border,
-      ],
+    return new Scaffold(
+      body: ListView(
+        children: [
+          image,
+          favoriteRow,
+          buttonRow,
+          textSection,
+          cardWidget,
+          stackWidget,
+          border,
+        ],
+      ),
     );
   }
 
   Widget _buildImage() {
     return Image.asset(
-      'assets/images/lake.jpeg',
+      'images/lake.jpeg',
     );
   }
 
@@ -47,7 +49,8 @@ class LayoutWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
                   'Oeschinen Lake Campground',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                  style:
+                      TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0),
                 ),
               ),
               Text(
@@ -155,7 +158,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
       alignment: const Alignment(0.5, 0.6),
       children: [
         new CircleAvatar(
-          backgroundImage: new AssetImage('assets/images/pic.jpg'),
+          backgroundImage: new AssetImage('images/pic.jpg'),
           radius: 100.0,
         ),
         new Container(
@@ -229,7 +232,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
                         const BorderRadius.all(const Radius.circular(8.0)),
                   ),
                   margin: const EdgeInsets.all(4.0),
-                  child: new Image.asset('assets/images/pic.jpg'),
+                  child: new Image.asset('images/pic.jpg'),
                 ),
               ),
               new Expanded(
@@ -240,7 +243,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
                         const BorderRadius.all(const Radius.circular(8.0)),
                   ),
                   margin: const EdgeInsets.all(4.0),
-                  child: new Image.asset('assets/images/pic.jpg'),
+                  child: new Image.asset('images/pic.jpg'),
                 ),
               ),
             ],
@@ -255,7 +258,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
                         const BorderRadius.all(const Radius.circular(8.0)),
                   ),
                   margin: const EdgeInsets.all(4.0),
-                  child: new Image.asset('assets/images/pic.jpg'),
+                  child: new Image.asset('images/pic.jpg'),
                 ),
               ),
               new Expanded(
@@ -266,7 +269,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
                         const BorderRadius.all(const Radius.circular(8.0)),
                   ),
                   margin: const EdgeInsets.all(4.0),
-                  child: new Image.asset('assets/images/pic.jpg'),
+                  child: new Image.asset('images/pic.jpg'),
                 ),
               ),
             ],
