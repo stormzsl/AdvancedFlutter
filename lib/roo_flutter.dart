@@ -9,3 +9,4 @@ export './state_widget/TabBoxB.dart';
 export './state_widget/ShopList.dart';
 export './state_widget/CountDisPlay.dart';
 export './net/net.dart' show NetWidget;
+export './platform/platform.dart' show PlatformChannel;

@@ -15,6 +15,8 @@ class LayoutWidget extends StatelessWidget {
     Widget rowWidget = _buildRowWidget();
     Widget aniamtionWidget = _buildAnimationWidget();
     Widget fontWidget = _buildCustomFont();
+    Widget textInputWidget = _buildTextInputWidget();
+    Widget textFiledWidget = textFieldWidget();
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
     */
@@ -34,7 +36,9 @@ class LayoutWidget extends StatelessWidget {
               stackWidget,
               border,
               aniamtionWidget,
-              fontWidget
+              fontWidget,
+              textInputWidget,
+              textFiledWidget
             ],
           ),
         ));
@@ -403,6 +407,84 @@ class _buildCustomFont extends StatelessWidget {
         'This is a custom font text',
         style: new TextStyle(fontFamily: 'san_bold_font'),
       ),
+    );
+  }
+}
+
+class _buildTextInputWidget extends StatefulWidget {
+  _buildTextInputWidget({Key key}) : super(key: key);
+
+  @override
+  _buildTextInputState createState() => new _buildTextInputState();
+}
+
+class _buildTextInputState extends State<_buildTextInputWidget> {
+  String _errorText;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new TextField(
+        onSubmitted: (String text) {
+          setState(() {
+            if (!isEmail(text)) {
+              _errorText = 'Error: This is not an email';
+            } else {
+              _errorText = null;
+            }
+          });
+        },
+        decoration: new InputDecoration(
+            hintText: "This is a hint", errorText: _getErrorText()),
+      ),
+    );
+  }
+
+  _getErrorText() {
+    return _errorText;
+  }
+
+  bool isEmail(String em) {
+    String emailRegexp =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+    RegExp regExp = new RegExp(emailRegexp);
+
+    return regExp.hasMatch(em);
+  }
+}
+
+class textFieldWidget extends StatefulWidget {
+  @override
+  __textFieldWidgetState createState() => __textFieldWidgetState();
+}
+
+class __textFieldWidgetState extends State<textFieldWidget> {
+  final TextEditingController _controller = new TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return new Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        new TextField(
+          controller: _controller,
+          decoration: new InputDecoration(
+            hintText: 'Type something',
+          ),
+        ),
+        new RaisedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              child: new AlertDialog(
+                title: new Text('What you typed'),
+                content: new Text(_controller.text),
+              ),
+            );
+          },
+          child: new Text('DONE'),
+        ),
+      ],
     );
   }
 }

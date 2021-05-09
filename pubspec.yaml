@@ -50,17 +50,20 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  #style 指定字体是倾斜还是正常，对应的值为italic和 normal. 这些值对应 FontStyle 可以用于TextStyle的 fontStyle TextStyle 属性
+  #weight属性指定字体的粗细，取值范围是100到900之间的整百数(100的倍数). 这些值对应 FontWeight， 可以用于 TextStyle的fontWeight属性
   assets:
     - images/
   fonts:
-   - family: custom_font
-     fonts:
-       - asset: fonts/custom_font.otf
-       - style: italic  
+  #  - family: custom_font
+  #    fonts:
+  #      - asset: fonts/custom_font.otf
+  #      - style: italic
    - family: san_bold_font
      fonts:
        - asset: fonts/san_bold_font.otf
-      #  - style: bold      
+         weight: 500
+       
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
