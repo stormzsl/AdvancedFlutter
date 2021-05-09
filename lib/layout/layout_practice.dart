@@ -12,22 +12,32 @@ class LayoutWidget extends StatelessWidget {
     Widget stackWidget = _buildStack();
     Widget listview = _buildListView();
     Widget border = _buildBorderWidget();
+    Widget rowWidget = _buildRowWidget();
+    Widget aniamtionWidget = _buildAnimationWidget();
+    Widget fontWidget = _buildCustomFont();
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
     */
     return new Scaffold(
-      body: ListView(
-        children: [
-          image,
-          favoriteRow,
-          buttonRow,
-          textSection,
-          cardWidget,
-          stackWidget,
-          border,
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text('基础布局'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.only(bottom: 100),
+          child: ListView(
+            children: [
+              image,
+              favoriteRow,
+              buttonRow,
+              textSection,
+              cardWidget,
+              stackWidget,
+              border,
+              aniamtionWidget,
+              fontWidget
+            ],
+          ),
+        ));
   }
 
   Widget _buildImage() {
@@ -325,6 +335,74 @@ class _FavoriteWidgetState extends State<_FavoriteFulWidget> {
           ),
         )
       ],
+    );
+  }
+}
+
+class _buildRowWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 100,
+      color: Colors.white,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("row1"),
+          Text("row2"),
+          Text("row3"),
+        ],
+      ),
+    );
+  }
+}
+
+class _buildAnimationWidget extends StatefulWidget {
+  @override
+  __buildAnimationWidgetState createState() => __buildAnimationWidgetState();
+}
+
+class __buildAnimationWidgetState extends State<_buildAnimationWidget>
+    with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  CurvedAnimation curve;
+  @override
+  void initState() {
+    controller = new AnimationController(
+        duration: const Duration(milliseconds: 2000), vsync: this);
+    curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new GestureDetector(
+        child: new RotationTransition(
+            turns: curve,
+            child: new FlutterLogo(
+              size: 50.0,
+            )),
+        onDoubleTap: () {
+          if (controller.isCompleted) {
+            controller.reverse();
+          } else {
+            controller.forward();
+          }
+        },
+      ),
+    );
+  }
+}
+
+class _buildCustomFont extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: new Text(
+        'This is a custom font text',
+        style: new TextStyle(fontFamily: 'san_bold_font'),
+      ),
     );
   }
 }

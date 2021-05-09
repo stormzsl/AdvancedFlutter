@@ -26,7 +26,7 @@ class _NetWidgetState extends State<NetWidget> {
   _getProgressDialog() {
     return Center(
       child: CircularProgressIndicator(
-        backgroundColor: RooColors.grayLighter,
+        backgroundColor: RooColors.gray,
       ),
     );
   }
@@ -35,18 +35,20 @@ class _NetWidgetState extends State<NetWidget> {
     var itemTails = List<Widget>();
     items.forEach((element) {
       var tail = Container(
-        margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        child: ListTile(
-          title: Text(
-            element['title'],
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-          ),
-          trailing: Icon(Icons.arrow_right),
-        ),
-      );
+          margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          child: GestureDetector(
+            child: ListTile(
+              title: Text(
+                element['title'],
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              ),
+              trailing: Icon(Icons.arrow_right),
+            ),
+            onTap: () => {print("${element['title']} click")},
+          ));
       itemTails.add(tail);
     });
     return itemTails;
