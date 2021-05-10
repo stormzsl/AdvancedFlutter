@@ -115,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             _buildListTitle("小提示", "RooToast", null),
             _buildListTitle("基础布局", "LayoutPractice", LayoutWidget()),
+            _buildListTitle("路由跳转", "route", RouteWidget()),
             _buildListTitle("网络请求", "Net", NetWidget()),
             _buildListTitle("互操", "Channel", PlatformChannel()),
             _buildBottom(),
