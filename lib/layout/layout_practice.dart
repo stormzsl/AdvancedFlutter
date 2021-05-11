@@ -17,6 +17,8 @@ class LayoutWidget extends StatelessWidget {
     Widget fontWidget = _buildCustomFont();
     Widget textInputWidget = _buildTextInputWidget();
     Widget textFiledWidget = textFieldWidget();
+    Widget progressIndictorWidget = _buildProgressIndictor();
+    Widget progressRouteWidget = _buidlProgressRoute();
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
     */
@@ -38,7 +40,9 @@ class LayoutWidget extends StatelessWidget {
               aniamtionWidget,
               fontWidget,
               textInputWidget,
-              textFiledWidget
+              textFiledWidget,
+              progressIndictorWidget,
+              progressRouteWidget
             ],
           ),
         ));
@@ -485,6 +489,127 @@ class __textFieldWidgetState extends State<textFieldWidget> {
           child: new Text('DONE'),
         ),
       ],
+    );
+  }
+}
+
+class _buildProgressIndictor extends StatefulWidget {
+  @override
+  __buildProgressIndictorState createState() => __buildProgressIndictorState();
+}
+
+class __buildProgressIndictorState extends State<_buildProgressIndictor> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // 模糊进度条(会执行一个动画)
+            LinearProgressIndicator(
+              backgroundColor: Colors.grey[200],
+              valueColor: AlwaysStoppedAnimation(Colors.orange),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            //进度条显示50%
+            LinearProgressIndicator(
+              backgroundColor: Colors.grey[200],
+              valueColor: AlwaysStoppedAnimation(Colors.red),
+              value: .5,
+            ),
+            SizedBox(height: 10),
+            // 模糊进度条(会执行一个旋转动画)
+            CircularProgressIndicator(
+              backgroundColor: Colors.grey[200],
+              valueColor: AlwaysStoppedAnimation(Colors.blue),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            //进度条显示50%，会显示一个半圆
+            CircularProgressIndicator(
+              backgroundColor: Colors.grey[200],
+              valueColor: AlwaysStoppedAnimation(Colors.blue),
+              value: .5,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            // 线性进度条高度指定为3
+            SizedBox(
+              height: 3,
+              child: LinearProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: AlwaysStoppedAnimation(Colors.blue),
+                value: .5,
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            // 圆形进度条直径指定为100
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.grey[200],
+                valueColor: AlwaysStoppedAnimation(Colors.blue),
+                value: .7,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _buidlProgressRoute extends StatefulWidget {
+  @override
+  _ProgressRouteState createState() => _ProgressRouteState();
+}
+
+class _ProgressRouteState extends State<_buidlProgressRoute>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    //动画执行时间3秒
+    _animationController =
+        new AnimationController(vsync: this, duration: Duration(seconds: 3));
+    _animationController.forward();
+    _animationController.addListener(() => setState(() => {}));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: LinearProgressIndicator(
+              backgroundColor: Colors.grey[200],
+              valueColor: ColorTween(begin: Colors.grey, end: Colors.blue)
+                  .animate(_animationController), // 从灰色变成蓝色
+              value: _animationController.value,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
