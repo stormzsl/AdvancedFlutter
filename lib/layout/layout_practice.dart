@@ -20,6 +20,7 @@ class LayoutWidget extends StatelessWidget {
     Widget progressIndictorWidget = _buildProgressIndictor();
     Widget progressRouteWidget = _buidlProgressRoute();
     Widget wrapWidget = _buildWrapWidget();
+    Widget stackPositionedWidget = _buildStackPositionedWidget();
 
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
@@ -45,7 +46,7 @@ class LayoutWidget extends StatelessWidget {
               textFiledWidget,
               progressIndictorWidget,
               progressRouteWidget,
-              wrapWidget
+              wrapWidget,
             ],
           ),
         ));
@@ -572,7 +573,6 @@ class __buildProgressIndictorState extends State<_buildProgressIndictor> {
   }
 }
 
-///目前动画没有生效，原因有待调查
 class _buidlProgressRoute extends StatefulWidget {
   @override
   _ProgressRouteState createState() => _ProgressRouteState();
@@ -647,6 +647,36 @@ class _buildWrapWidget extends StatelessWidget {
           label: new Text('Laurens'),
         ),
       ],
+    );
+  }
+}
+
+//目前显示有问题，原因有待调查,层叠布局:https://book.flutterchina.club/chapter4/stack.html
+class _buildStackPositionedWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return
+        //通过ConstrainedBox来确保Stack占满屏幕
+        ConstrainedBox(
+      constraints: BoxConstraints.expand(
+          width: double.infinity, height: double.infinity),
+      child: Stack(
+        alignment: Alignment.center, //指定未定位或部分定位widget的对齐方式
+        children: <Widget>[
+          Container(
+            child: Text("Hello world", style: TextStyle(color: Colors.white)),
+            color: Colors.red,
+          ),
+          Positioned(
+            left: 18.0,
+            child: Text("I am Jack"),
+          ),
+          Positioned(
+            top: 18.0,
+            child: Text("Your friend"),
+          )
+        ],
+      ),
     );
   }
 }
