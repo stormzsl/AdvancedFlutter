@@ -19,6 +19,8 @@ class LayoutWidget extends StatelessWidget {
     Widget textFiledWidget = textFieldWidget();
     Widget progressIndictorWidget = _buildProgressIndictor();
     Widget progressRouteWidget = _buidlProgressRoute();
+    Widget wrapWidget = _buildWrapWidget();
+
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
     */
@@ -42,7 +44,8 @@ class LayoutWidget extends StatelessWidget {
               textInputWidget,
               textFiledWidget,
               progressIndictorWidget,
-              progressRouteWidget
+              progressRouteWidget,
+              wrapWidget
             ],
           ),
         ));
@@ -569,6 +572,7 @@ class __buildProgressIndictorState extends State<_buildProgressIndictor> {
   }
 }
 
+///目前动画没有生效，原因有待调查
 class _buidlProgressRoute extends StatefulWidget {
   @override
   _ProgressRouteState createState() => _ProgressRouteState();
@@ -581,11 +585,11 @@ class _ProgressRouteState extends State<_buidlProgressRoute>
   @override
   void initState() {
     //动画执行时间3秒
+    super.initState();
     _animationController =
         new AnimationController(vsync: this, duration: Duration(seconds: 3));
     _animationController.forward();
     _animationController.addListener(() => setState(() => {}));
-    super.initState();
   }
 
   @override
@@ -610,6 +614,39 @@ class _ProgressRouteState extends State<_buidlProgressRoute>
           )
         ],
       ),
+    );
+  }
+}
+
+class _buildWrapWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 8.0, // 主轴(水平)方向间距
+      runSpacing: 4.0, // 纵轴（垂直）方向间距
+      alignment: WrapAlignment.center, //沿主轴方向居中
+      children: <Widget>[
+        new Chip(
+          avatar:
+              new CircleAvatar(backgroundColor: Colors.blue, child: Text('A')),
+          label: new Text('Hamilton'),
+        ),
+        new Chip(
+          avatar:
+              new CircleAvatar(backgroundColor: Colors.blue, child: Text('M')),
+          label: new Text('Lafayette'),
+        ),
+        new Chip(
+          avatar:
+              new CircleAvatar(backgroundColor: Colors.blue, child: Text('H')),
+          label: new Text('Mulligan'),
+        ),
+        new Chip(
+          avatar:
+              new CircleAvatar(backgroundColor: Colors.blue, child: Text('J')),
+          label: new Text('Laurens'),
+        ),
+      ],
     );
   }
 }
