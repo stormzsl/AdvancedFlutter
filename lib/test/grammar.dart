@@ -122,3 +122,22 @@ class streamPratcie {
     }, onDone: () {});
   }
 }
+
+/// factory关键字的作用:https://zhuanlan.zhihu.com/p/133924017
+///
+/// 实现单例
+class Singleton {
+  static final Singleton _singleton = Singleton._internal();
+
+  factory Singleton() {
+    return _singleton;
+  }
+
+  Singleton._internal();
+}
+
+main() {
+  var s1 = Singleton();
+  var s2 = Singleton();
+  print(identical(s1, s2));
+}
