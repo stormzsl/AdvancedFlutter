@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'child.dart';
 /*
  * 了解组件的生命周期函数
  */
@@ -68,11 +69,17 @@ class _LifeCycleWidgetState extends State<LifeCycleWidget> {
       ) ,
       body: Container(
         alignment: Alignment.center,
-        child: SizedBox(
-          child: RaisedButton(onPressed: _pressLogic,
-            child: Text("点击了$_count"),
-          ),
-        ),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              child: RaisedButton(onPressed: _pressLogic,
+                child: Text("点击了$_count"),
+              ),
+            ),
+            ChildWidget()
+          ],
+        )
+
       ),
     );
   }
