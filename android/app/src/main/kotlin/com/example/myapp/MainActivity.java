@@ -9,6 +9,9 @@ import android.os.BatteryManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -57,7 +60,20 @@ public class MainActivity extends FlutterActivity {
                             } else {
                                 result.error("UNAVAILABLE", "Battery level not available.", null);
                             }
-                        } else {
+                        } else if(call.method.equals("jumpSecondActivity")){
+                            try {
+                               String params= call.argument("arg1");
+                                Log.e("MainActivity",params);
+                                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+                                Toast.makeText(MainActivity.this,"启动成功",Toast.LENGTH_SHORT).show();
+                                result.success(100);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Toast.makeText(MainActivity.this,"抱歉,启动失败了",Toast.LENGTH_SHORT).show();
+                                result.error("-100","err",null);
+                            }
+                        }
+                        else {
                             result.notImplemented();
                         }
                     }

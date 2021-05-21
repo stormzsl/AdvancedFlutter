@@ -13,6 +13,7 @@ class PlatformChannel extends StatefulWidget {
 class _PlatformChannelState extends State<PlatformChannel> {
   static const MethodChannel methodChannel =
       MethodChannel('samples.flutter.io/battery');
+
   static const EventChannel eventChannel =
       EventChannel('samples.flutter.io/charging');
 
@@ -51,6 +52,16 @@ class _PlatformChannelState extends State<PlatformChannel> {
     });
   }
 
+  Future<void> _jumpSecondActivityPress() async {
+    try {
+      final int result = await methodChannel
+          .invokeMethod("jumpSecondActivity", {"arg1": "from flutter params"});
+      debugPrint("result is $result");
+    } on PlatformException {
+      debugPrint("_jumpSecondActivityPress is error");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +82,13 @@ class _PlatformChannelState extends State<PlatformChannel> {
                   onPressed: _getBatteryLevel,
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: RaisedButton(
+                  onPressed: _jumpSecondActivityPress,
+                  child: const Text("jump to secondActivity"),
+                ),
+              )
             ],
           ),
           Text(_chargingStatus),
