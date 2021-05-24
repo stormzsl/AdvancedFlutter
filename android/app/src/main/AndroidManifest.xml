@@ -27,6 +27,9 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -37,6 +40,16 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-       <activity android:name=".SecondActivity"/>
+       <activity android:name=".SecondActivity">
+           <!-- Deep linking -->
+           <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
+           <intent-filter android:autoVerify="true">
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+               <data android:scheme="http" android:host="flutterbooksample.com" />
+               <data android:scheme="https" />
+           </intent-filter>
+       </activity>
     </application>
 </manifest>
