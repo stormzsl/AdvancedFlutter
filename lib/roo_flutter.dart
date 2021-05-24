@@ -15,3 +15,4 @@ export './animate_summary/flutter_logo.dart' show LogoWidget;
 export './animate_summary/flutter_animate_logo.dart' show AnimateLogoWidget;
 
 export './animate_summary/flutter_elegant_animate.dart' show ElegantWidget;
+export './animate_summary/cureve_animate.dart' show CureveAnimateWidget;

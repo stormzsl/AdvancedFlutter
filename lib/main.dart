@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("网络请求", "Net", NetWidget()),
             _buildListTitle("互操", "Channel", PlatformChannel()),
             _buildListTitle("widget生命周期", "lifeCycle", LifeCycleWidget()),
-            _buildListTitle("动画", "LogoWidget", ElegantWidget()),
+            _buildListTitle("动画", "LogoWidget", CureveAnimateWidget()),
             _buildBottom(),
           ],
         ),
