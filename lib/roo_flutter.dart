@@ -16,3 +16,4 @@ export './animate_summary/flutter_animate_logo.dart' show AnimateLogoWidget;
 
 export './animate_summary/flutter_elegant_animate.dart' show ElegantWidget;
 export './animate_summary/cureve_animate.dart' show CureveAnimateWidget;
+export './hero/hero_animate.dart' show HeroAnimation,BasicHeroAnimation,StaggerDemo;

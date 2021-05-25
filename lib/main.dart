@@ -121,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("互操", "Channel", PlatformChannel()),
             _buildListTitle("widget生命周期", "lifeCycle", LifeCycleWidget()),
             _buildListTitle("动画", "LogoWidget", CureveAnimateWidget()),
+            _buildListTitle("Hero动画", "StaggedAnimation", StaggerDemo()),
             _buildBottom(),
           ],
         ),
