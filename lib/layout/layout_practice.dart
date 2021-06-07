@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -22,6 +23,7 @@ class LayoutWidget extends StatelessWidget {
     Widget wrapWidget = _buildWrapWidget();
     Widget stackPositionedWidget = _buildStackPositionedWidget();
     Widget customScrollViewWidget = _buildCustomScrollViewWidget();
+    Widget cupertinoPickerWidget =_buildCupertinoPicker();
 
     /*
     * 在最后一步，你将上面这些组装在一起。这些widget放置到ListView中，而不是列中，因为在小设备上运行应用程序时，ListView会自动滚动。
@@ -48,6 +50,7 @@ class LayoutWidget extends StatelessWidget {
               progressIndictorWidget,
               progressRouteWidget,
               wrapWidget,
+              cupertinoPickerWidget,
             ],
           ),
         ));
@@ -744,3 +747,30 @@ class _buildCustomScrollViewWidget extends StatelessWidget {
     );
   }
 }
+
+class _buildCupertinoPicker extends StatelessWidget {
+  const _buildCupertinoPicker({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return
+    Container(
+      height: 270,
+      child: CupertinoPicker(
+        itemExtent: 45,
+        onSelectedItemChanged: (index){
+        },
+        children: <Widget>[
+          Container(color: Colors.primaries[1],),
+          Container(color: Colors.primaries[2],),
+          Container(color: Colors.primaries[3],),
+          Container(color: Colors.primaries[4],),
+          Container(color: Colors.primaries[5],),
+          Container(color: Colors.primaries[6],),
+        ],
+      ) ,
+    );
+
+  }
+}
+
