@@ -127,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("状态变化1", "CounterNotifierPage", CounterNotifierPage()),
             _buildListTitle("状态变化2", "MultiProviderWidget", MultiProviderWidget()),
             _buildListTitle("状态变化3", "ConsumerTestPage", ConsumerTestPage()),
+            _buildListTitle("状态变化4", "SelectorTestPage", SelectorTestPage()),
             _buildBottom(),
           ],
         ),

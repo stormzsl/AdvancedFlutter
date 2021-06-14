@@ -212,6 +212,13 @@ packages:
       url: "https://pub.sankuai.com"
     source: hosted
     version: "0.2.15"
+  tuple:
+    dependency: "direct main"
+    description:
+      name: tuple
+      url: "https://pub.sankuai.com"
+    source: hosted
+    version: "1.0.3"
   typed_data:
     dependency: transitive
     description:

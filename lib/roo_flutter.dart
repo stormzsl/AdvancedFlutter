@@ -21,3 +21,4 @@ export './sliver_widgets/basic_usage.dart' show SliverDemo,StickyDemo;
 export './state/counter_notifier_page.dart' show CounterNotifierPage;
 export './state/multi_provider.dart' show MultiProviderWidget;
 export './selector/consumer_test.dart' show ConsumerTestPage;
+export './selector/selector_test.dart' show SelectorTestPage;
