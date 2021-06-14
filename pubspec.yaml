@@ -36,6 +36,9 @@ dependencies:
   # http
   http: any
 
+    # Provider https://github.com/rrousselGit/provider
+  provider: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

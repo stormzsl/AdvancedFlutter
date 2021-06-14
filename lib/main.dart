@@ -124,6 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("Hero动画", "StaggedAnimation", StaggerDemo()),
             _buildListTitle("滑动效果", "SliverDemo", SliverDemo()),
             _buildListTitle("吸顶效果", "StickyDemo", StickyDemo()),
+            _buildListTitle("状态变化", "CounterNotifierPage", CounterNotifierPage()),
+            _buildListTitle("状态变化", "MultiProviderWidget", MultiProviderWidget()),
             _buildBottom(),
           ],
         ),
