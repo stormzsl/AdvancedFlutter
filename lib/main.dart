@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/lifecycle/lifecycle.dart';
+import 'inherited_widget/inherited_widget_page.dart';
 import 'json_convert/photo_show_widget.dart';
 import 'roo_flutter.dart';
 
@@ -63,14 +64,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Text(
                     title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: kDefalutNormalTitleStyle,
                   ),
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    subTitle,
-                    style: kDefaultNormalTextStyle,
+                  Container(
+                    constraints: BoxConstraints(maxWidth: 150),
+                    child: Text(
+                      subTitle,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: kDefaultNormalTextStyle,
+                    ),
                   )
                 ],
               ),
@@ -126,10 +134,14 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("Hero动画", "StaggedAnimation", StaggerDemo()),
             _buildListTitle("滑动效果", "SliverDemo", SliverDemo()),
             _buildListTitle("吸顶效果", "StickyDemo", StickyDemo()),
-            _buildListTitle("状态变化1", "CounterNotifierPage", CounterNotifierPage()),
-            _buildListTitle("状态变化2", "MultiProviderWidget", MultiProviderWidget()),
+            _buildListTitle(
+                "状态变化1", "CounterNotifierPage", CounterNotifierPage()),
+            _buildListTitle(
+                "状态变化2", "MultiProviderWidget", MultiProviderWidget()),
             _buildListTitle("状态变化3", "ConsumerTestPage", ConsumerTestPage()),
             _buildListTitle("状态变化4", "SelectorTestPage", SelectorTestPage()),
+            _buildListTitle(
+                "数据传递", "InheritedWidgetTestRoute", InheritedWidgetTestRoute()),
             _buildBottom(),
           ],
         ),
