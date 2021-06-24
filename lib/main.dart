@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/lifecycle/lifecycle.dart';
+import 'json_convert/photo_show_widget.dart';
 import 'roo_flutter.dart';
 
 void main() => runApp(new MyApp());
@@ -118,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("基础布局", "LayoutPractice", LayoutWidget()),
             _buildListTitle("路由跳转", "route", RouteWidget()),
             _buildListTitle("网络请求", "Net", NetWidget()),
+            _buildListTitle("网络图片", "PhotoShow", PhotoShow()),
             _buildListTitle("互操", "Channel", PlatformChannel()),
             _buildListTitle("widget生命周期", "lifeCycle", LifeCycleWidget()),
             _buildListTitle("动画", "LogoWidget", CureveAnimateWidget()),
