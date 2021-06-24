@@ -17,32 +17,49 @@ class Man with RunMan {
 }
 
 ///future的用法:https://book.flutterchina.club/chapter1/dart.html#_1-4-3-%E5%BC%82%E6%AD%A5%E6%94%AF%E6%8C%81
+///todo dart文档 https://dart.cn/guides/language/language-tour#declaring-async-functions
 class FuturePratice {
-  void method1() {
-    Future.delayed(Duration(seconds: 3), () {
-      return "";
-    }).then((value) => {print(value)}).catchError((onError) {
-      print(onError.toString());
+
+  // 用async修饰，生成异步函数
+  Future<String> getResultFuture() async =>"hello";
+  /*
+   * future 是 Future<T> 类的对象，其表示一个 T 类型的异步操作结果。
+   * 如果异步操作不需要结果，则 future 的类型可为 Future<void>。当一个返回 future 对象的函数被调用时，会发生两件事：
+   * 将函数操作列入队列等待执行并返回一个未完成的 Future 对象。
+   * 不久后当函数操作执行完成，Future 对象变为完成并携带一个值或一个错误。
+   * 当你写的代码依赖于 future 对象时，你有两种可选的实现方式：
+   * 1.使用关键字 async 和 await
+   * 2.使用 Future API
+   */
+  Future<void> method1() {
+    return  Future.delayed(Duration(seconds: 3), () {
+      return "delayed data";
+    }).then((value) => {debugPrint("then:$value")}).catchError((onError) {
+      debugPrint("catchError:${onError.toString()}");
     });
   }
 
-  void method2() {
-    Future.delayed(new Duration(seconds: 2), () {
+
+  Future<void> method2() {
+   return Future.delayed(new Duration(seconds: 2), () {
       //return "hi world!";
       throw AssertionError("Error");
     }).then((data) {
       //执行成功会走到这里
-      print(data);
+      print("suucess: $data");
     }).catchError((e) {
       //执行失败会走到这里
-      print(e);
+      print("catchError: $e");
     }).whenComplete(() {
       //无论成功或失败都会走到这里
+      print("whenComplete");
     });
   }
 
-  void method3() {
-    Future.wait([
+
+
+  Future<void> method3() {
+   return Future.wait([
       // 2秒后返回结果
       Future.delayed(new Duration(seconds: 2), () {
         return "hello";
@@ -60,15 +77,11 @@ class FuturePratice {
 
   ///使用future解决回调地狱的问题
   //先分别定义各个异步任务
-  Future<String> login(String userName, String pwd) {
-    //用户登录
-  }
-  Future<String> getUserInfo(String id) {
-    //获取用户信息
-  }
-  Future saveUserInfo(String userInfo) {
-    // 保存用户信息
-  }
+  Future<String> login(String userName, String pwd) async => "ohhg12";
+
+  Future<String> getUserInfo(String id) async => "userinfo";
+  Future<void> saveUserInfo(String userInfo) async => null;
+
   void method4() {
     ///使用Future虽然可以解决回调多层嵌套的问题，但是还是有一层嵌套，这里推荐使用async/wait彻底解决嵌套问题,参见method5
     login("alice", "******").then((id) {
@@ -85,7 +98,7 @@ class FuturePratice {
 
   /// async用来表示函数是异步的，定义的函数会返回一个Future对象，可以使用then方法添加回调函数。
   /// await 后面是一个Future，表示等待该异步任务完成，异步完成后才会往下走；await必须出现在 async 函数内部
-  Future method5() async {
+  Future<void> method5() async {
     String id = await login("userName", "pwd");
     String info = await getUserInfo(id);
     await saveUserInfo(info);
@@ -100,7 +113,7 @@ Stream 也是用于接收异步事件数据，和Future 不同的是，它可以
 I/flutter (17666): Error
 I/flutter (17666): hello 3
 */
-class streamPratcie {
+class StreamPratcie {
   void method() {
     Stream.fromFutures([
       // 1秒后返回结果
@@ -119,7 +132,9 @@ class streamPratcie {
       print(data);
     }, onError: (e) {
       print(e.message);
-    }, onDone: () {});
+    }, onDone: () {
+      print(">>>> done");
+    });
   }
 }
 
@@ -137,7 +152,6 @@ class Singleton {
 }
 
 main() {
-  var s1 = Singleton();
-  var s2 = Singleton();
-  print(identical(s1, s2));
+  var streamPratcie =StreamPratcie();
+  streamPratcie.method();
 }
