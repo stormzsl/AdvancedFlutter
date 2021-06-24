@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/lifecycle/lifecycle.dart';
+import 'package:myapp/provider/provider_route_page.dart';
 import 'inherited_widget/inherited_widget_page.dart';
 import 'json_convert/photo_show_widget.dart';
 import 'roo_flutter.dart';
@@ -142,6 +143,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("状态变化4", "SelectorTestPage", SelectorTestPage()),
             _buildListTitle(
                 "数据传递", "InheritedWidgetTestRoute", InheritedWidgetTestRoute()),
+            _buildListTitle(
+                "provider原理", "ProviderRoute", ProviderRoute()),
             _buildBottom(),
           ],
         ),
