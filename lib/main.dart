@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/lifecycle/lifecycle.dart';
 import 'package:myapp/provider/provider_route_page.dart';
+import 'async_update_ui/future_builder.dart';
 import 'box_constraints/box_constraints_page.dart';
 import 'box_constraints/switch_theme.dart';
 import 'inherited_widget/inherited_widget_page.dart';
@@ -132,6 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("主题切换", "ThemeTestRoute", ThemeTestRoute()),
             _buildListTitle("路由跳转", "route", RouteWidget()),
             _buildListTitle("网络请求", "Net", NetWidget()),
+            _buildListTitle("异步刷新", "FutureBuilderPage", FutureBuilderPage()),
             _buildListTitle("网络图片", "PhotoShow", PhotoShow()),
             _buildListTitle("互操", "Channel", PlatformChannel()),
             _buildListTitle("widget生命周期", "lifeCycle", LifeCycleWidget()),
