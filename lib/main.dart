@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/lifecycle/lifecycle.dart';
 import 'package:myapp/provider/provider_route_page.dart';
 import 'box_constraints/box_constraints_page.dart';
+import 'box_constraints/switch_theme.dart';
 import 'inherited_widget/inherited_widget_page.dart';
 import 'json_convert/photo_show_widget.dart';
 import 'roo_flutter.dart';
@@ -128,6 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildListTitle("小提示", "RooToast", null),
             _buildListTitle("基础布局", "LayoutPractice", LayoutWidget()),
             _buildListTitle("约束布局", "BoxConstrainsPage", BoxConstrainsPage()),
+            _buildListTitle("主题切换", "ThemeTestRoute", ThemeTestRoute()),
             _buildListTitle("路由跳转", "route", RouteWidget()),
             _buildListTitle("网络请求", "Net", NetWidget()),
             _buildListTitle("网络图片", "PhotoShow", PhotoShow()),
