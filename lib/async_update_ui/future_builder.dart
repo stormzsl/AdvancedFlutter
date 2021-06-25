@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // todo https://book.flutterchina.club/chapter7/futurebuilder_and_streambuilder.html#_7-5-1-futurebuilder
 class FutureBuilderPage extends StatefulWidget {
   const FutureBuilderPage({Key key}) : super(key: key);
+
   @override
   _FutureBuilderPageState createState() => _FutureBuilderPageState();
 }
@@ -40,7 +41,10 @@ class _FutureBuilderPageState extends State<FutureBuilderPage> {
               if (snapshot.hasError) {
                 return Text("occur error:${snapshot.error}");
               } else {
-                return Text("${snapshot.data}",style: TextStyle(fontSize: 14),);
+                return Text(
+                  "${snapshot.data}",
+                  style: TextStyle(fontSize: 14),
+                );
               }
             } else {
               //请求未结束，显示加载框
