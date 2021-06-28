@@ -5,6 +5,7 @@ import 'async_update_ui/future_builder.dart';
 import 'async_update_ui/stream_builder.dart';
 import 'box_constraints/box_constraints_page.dart';
 import 'box_constraints/switch_theme.dart';
+import 'dialog/dialog_normal.dart';
 import 'inherited_widget/inherited_widget_page.dart';
 import 'json_convert/photo_show_widget.dart';
 import 'roo_flutter.dart';
@@ -130,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             _buildListTitle("小提示", "RooToast", null),
             _buildListTitle("基础布局", "LayoutPractice", LayoutWidget()),
+            _buildListTitle("对话框", "DialogNormalPage", DialogNormalPage()),
             _buildListTitle("约束布局", "BoxConstrainsPage", BoxConstrainsPage()),
             _buildListTitle("主题切换", "ThemeTestRoute", ThemeTestRoute()),
             _buildListTitle("路由跳转", "route", RouteWidget()),
